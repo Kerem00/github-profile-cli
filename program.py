@@ -20,7 +20,7 @@ from requests.exceptions import HTTPError
 
 def main():
 	username = input("username> ")
-	if not re.match("^\w+$", username):
+	if not re.match(r"^\w+$", username):
 		print("Specified username is invalid.")
 		return
 	try:
