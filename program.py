@@ -16,7 +16,6 @@
 
 import re
 import requests
-from requests.exceptions import HTTPError
 
 def main():
 	username = input("username> ")
@@ -29,7 +28,7 @@ def main():
 		info = info.json()
 		repos = requests.get(info["repos_url"]).json()
 		print("\nName: {}\nNickname: {}\nRepos:\n\t{}".format(info["name"], info["login"], "\n\t".join([repo["name"] for repo in repos])))
-	except HTTPError as e:
+	except requests.exceptions.HTTPError as e:
 		if e.response.status_code == 404:
 			print(f"'{username}' not found.")
 
